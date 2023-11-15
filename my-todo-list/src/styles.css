@@ -5,3 +5,16 @@
 /* @import '~@fortawesome/fontawesome-free/css/all.css'; */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.spin {
+  animation: spin 1s linear 1;
+}

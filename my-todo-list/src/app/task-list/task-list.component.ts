@@ -24,9 +24,9 @@ import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.componen
   ],
 })
 export class TaskListComponent {
-openModal() {
-  this.showAddTaskModal = true;
-}
+  openModal() {
+    this.showAddTaskModal = true;
+  }
   showAddTaskModal = false;
 
   oopenModal() {
@@ -39,7 +39,10 @@ openModal() {
     this.todo.push(event.title);
     this.todo.push(event.description);
   }
-
+  
+  deleteTask(index: number) {
+    this.todo.splice(index, 1);
+  }
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
