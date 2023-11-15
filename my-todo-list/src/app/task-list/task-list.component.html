@@ -17,10 +17,10 @@
       >
         <div class="example-box" *ngFor="let item of todo" cdkDrag>
           <p class="font-semibold flex flex-row items-center">
-            <span class="material-icons mr-2">hourglass_empty</span>
-            Nom de Tâche
+            <span class="material-icons mr-2">hourglass_bottom</span>
+            {{ item }}
           </p>
-          <p class="pl-8">{{ item }}</p>
+          <p class="pl-8"></p>
         </div>
       </div>
     </div>
@@ -37,9 +37,9 @@
         <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
           <p class="font-semibold flex flex-row items-center">
             <span class="material-icons mr-2">hourglass_top</span>
-            Nom de Tâche
+            {{ item }}
           </p>
-          <p class="pl-8">{{ item }}</p>
+          <p class="pl-8"></p>
         </div>
       </div>
     </div>
@@ -55,9 +55,9 @@
       >
         <div class="example-box" *ngFor="let item of done" cdkDrag>
           <p class="font-semibold flex flex-row items-center">
-            <span class="material-icons mr-2">check_circle</span> Nom de Tâche 
+            <span class="material-icons mr-2">check_circle</span> {{ item }} 
           </p>
-          <p class="pl-8">{{ item }}</p>
+          <p class="pl-8"></p>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export class AddTaskModalComponent {
     this.showAddTaskModal = true;
   }
   submitTask(): void {
-    if (this.taskTitle.trim()) {
+    if (this.taskTitle.trim() || this.taskDescription.trim()) {
       // Envoyer les données de la tâche au composant parent
       this.taskAdded.emit({
         title: this.taskTitle,

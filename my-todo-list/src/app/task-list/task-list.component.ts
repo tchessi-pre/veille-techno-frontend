@@ -37,6 +37,7 @@ openModal() {
     // Ajoutez ici votre logique pour gérer l'ajout de la nouvelle tâche
     // Par exemple, ajouter la tâche à la liste 'todo'
     this.todo.push(event.title);
+    this.todo.push(event.description);
   }
 
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
