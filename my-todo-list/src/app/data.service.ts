@@ -13,7 +13,7 @@ export class DataService {
         const serializedData = JSON.stringify(data);
         localStorage.setItem(key, serializedData);
       } catch (e) {
-        console.error('Erreur lors de l’enregistrement dans localStorage', e);
+        console.error('Erreur lors de l\’enregistrement dans localStorage', e);
       }
     }
   }

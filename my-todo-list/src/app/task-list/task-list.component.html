@@ -14,7 +14,7 @@
 
     <!-- Colonne À faire -->
     <div class="example-container">
-      <h2>À faire</h2>
+      <h2>À faire ({{ todo.length }})</h2>
       <div
         cdkDropList
         [cdkDropListData]="todo"
@@ -35,15 +35,16 @@
           <!-- Icône de suppression -->
           <span
             class="material-icons cursor-pointer text-#c9c8c8af-200 absolute top-0 right-0 mt-2 mr-2"
-            (click)="deleteTask(i, 'todo')">clear</span
->
+            (click)="deleteTask(i, 'todo')"
+            >clear</span
+          >
         </div>
       </div>
     </div>
 
     <!-- Colonne En cours -->
     <div class="example-container">
-      <h2>En cours</h2>
+      <h2>En cours ({{ inProgress.length }})</h2>
       <div
         cdkDropList
         [cdkDropListData]="inProgress"
@@ -56,28 +57,36 @@
             {{ item.title }}
           </p>
           <p class="pl-8">{{ item.description }}</p>
-          
         </div>
       </div>
     </div>
 
     <!-- Colonne Terminé -->
     <div class="example-container">
-      <h2>Terminé</h2>
+      <h2>Terminé ({{ done.length }})</h2>
       <div
         cdkDropList
         [cdkDropListData]="done"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box" *ngFor="let item of done" cdkDrag>
-          <div class="font-semibold flex flex-row">
+        <div
+          class="example-box relative"
+          *ngFor="let item of done; let i = index"
+          cdkDrag
+        >
+          <div class="font-semibold flex flex-row justify-between">
             <span class="material-icons mr-2 text-green-500">check_circle</span>
             <p class="font-semibold flex flex-row items-center line-through">
               {{ item.title }}
             </p>
           </div>
           <p class="pl-8">{{ item.description }}</p>
+          <span
+            class="material-icons cursor-pointer text-#c9c8c8af-200 absolute top-0 right-0 mt-2 mr-2"
+            (click)="deleteTask(i, 'done')"
+            >delete</span
+          >
         </div>
       </div>
     </div>

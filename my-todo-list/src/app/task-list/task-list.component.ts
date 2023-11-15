@@ -22,6 +22,10 @@ interface Task {
   imports: [CommonModule, AddTaskModalComponent, DragDropModule],
 })
 export class TaskListComponent implements OnInit {
+  clearDoneTasks() {
+    this.done = [];
+    this.saveTasks();
+  }
   showAddTaskModal = false;
   todo: Task[] = [];
   inProgress: Task[] = [];
