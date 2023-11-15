@@ -1,1 +1,18 @@
-<p>add-task-modal works!</p>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h2>Ajouter une Tâche</h2>
+    <form (ngSubmit)="submitTask()">
+      <div class="form-group">
+        <label for="taskTitle">Titre de la tâche</label>
+        <input type="text" id="taskTitle" [(ngModel)]="taskTitle" name="taskTitle" placeholder="Titre de la tâche" required>
+      </div>
+      <div class="form-group">
+        <label for="taskDescription">Description</label>
+        <textarea id="taskDescription" [(ngModel)]="taskDescription" name="taskDescription" placeholder="Description"></textarea>
+      </div>
+      <button type="submit" class="submit-button">Ajouter</button>
+    </form>
+  </div>
+</div>
