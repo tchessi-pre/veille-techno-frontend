@@ -8,7 +8,7 @@
 
 .example-list {
   border: solid 1px #ccc;
-  min-height: 60px;
+  min-height: 566px;
   background: white;
   border-radius: 4px;
   overflow: hidden;
@@ -18,10 +18,10 @@
 .example-box {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
-  color: rgba(6, 74, 247, 0.87);
+  color: rgba(19, 21, 26, 0.87);
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;

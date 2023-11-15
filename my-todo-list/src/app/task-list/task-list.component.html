@@ -1,4 +1,4 @@
-<div  class="flex justify-center mt-4">
+<div class="flex justify-center mt-4">
   <div cdkDropListGroup>
     <!-- Colonne À faire -->
     <div class="example-container">
@@ -10,7 +10,11 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div class="example-box" *ngFor="let item of todo" cdkDrag>
-          {{ item }}
+          <p class="font-semibold flex flex-row items-center">
+            <span class="material-icons mr-2">hourglass_empty</span>
+            Nom de Tâche
+          </p>
+          <p class="pl-8">{{ item }}</p>
         </div>
       </div>
     </div>
@@ -25,7 +29,11 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
-          {{ item }}
+          <p class="font-semibold flex flex-row items-center">
+            <span class="material-icons mr-2">hourglass_top</span>
+            Nom de Tâche
+          </p>
+          <p class="pl-8">{{ item }}</p>
         </div>
       </div>
     </div>
@@ -40,7 +48,10 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div class="example-box" *ngFor="let item of done" cdkDrag>
-          {{ item }}
+          <p class="font-semibold flex flex-row items-center">
+            <span class="material-icons mr-2">check_circle</span> Nom de Tâche 
+          </p>
+          <p class="pl-8">{{ item }}</p>
         </div>
       </div>
     </div>
