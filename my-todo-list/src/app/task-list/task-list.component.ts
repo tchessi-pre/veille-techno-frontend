@@ -1,39 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  CdkDropListGroup,
+  DragDropModule,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
+import { DataService } from '../data.service';
 
 interface Task {
   title: string;
   description: string;
 }
+
 @Component({
   selector: 'app-task-list',
   standalone: true,
   templateUrl: './task-list.component.html',
-  styleUrl: './task-list.component.css',
-  imports: [
-    CommonModule,
-    CdkDropListGroup,
-    CdkDropList,
-    CdkDrag,
-    AddTaskModalComponent,
-  ],
+  styleUrls: ['./task-list.component.css'],
+  imports: [CommonModule, AddTaskModalComponent, DragDropModule],
 })
-export class TaskListComponent {
-  openModal() {
-    this.showAddTaskModal = true;
-  }
+export class TaskListComponent implements OnInit {
   showAddTaskModal = false;
+  todo: Task[] = [];
+  inProgress: Task[] = [];
+  done: Task[] = [];
+  constructor(private dataService: DataService) {}
 
-  oopenModal() {
+  ngOnInit() {
+    this.loadTasks();
+  }
+
+  openModal() {
     this.showAddTaskModal = true;
   }
 
@@ -42,44 +41,14 @@ export class TaskListComponent {
       title: event.title,
       description: event.description,
     };
-
     this.todo.push(newTask);
+    this.saveTasks();
   }
 
-  deleteTask(index: number) {
-    this.todo.splice(index, 1);
+  deleteTask(index: number, list: 'todo' | 'inProgress' | 'done') {
+    this[list].splice(index, 1);
+    this.saveTasks();
   }
-
-  todo: Task[] = [
-    {
-      title: 'Get to work',
-      description: 'Commencer le développement du nouveau projet.',
-    },
-    {
-      title: 'Pick up groceries',
-      description: 'Acheter des légumes et des fruits pour la semaine.',
-    },
-    { title: 'Planifier la réunion hebdomadaire', description: 'Organiser l\'ordre du jour' },
-  ];
-
-  inProgress: Task[] = [
-    {
-      title: 'Rédiger le rapport de projet',
-      description: 'Finaliser le premier brouillon du rapport.',
-    },
-    { title: 'Développer la fonctionnalité X', description: 'Travailler sur l\'implémentation' },
-  ];
-
-  done: Task[] = [
-    {
-      title: 'Répondre aux e-mails',
-      description: 'Répondre à tous les e-mails en attente.',
-    },
-    {
-      title: 'Réunion avec le client',
-      description: 'Discuter des exigences du projet avec le client.',
-    },
-  ];
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -96,5 +65,22 @@ export class TaskListComponent {
         event.currentIndex
       );
     }
+    this.saveTasks();
+  }
+
+  saveTasks() {
+    const tasksData = {
+      todo: this.todo,
+      inProgress: this.inProgress,
+      done: this.done,
+    };
+    this.dataService.saveData('tasks', tasksData);
+  }
+
+  private loadTasks() {
+    const tasksData = JSON.parse(localStorage.getItem('tasks') || '{}');
+    this.todo = tasksData.todo || [];
+    this.inProgress = tasksData.inProgress || [];
+    this.done = tasksData.done || [];
   }
 }

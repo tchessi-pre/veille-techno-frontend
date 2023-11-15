@@ -1,33 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  constructor() { }
-
-  // Enregistrer des données dans localStorage
   saveData(key: string, data: any): void {
-    try {
-      const serializedData = JSON.stringify(data);
-      localStorage.setItem(key, serializedData);
-    } catch (e) {
-      console.error('Erreur lors de l’enregistrement dans localStorage', e);
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        const serializedData = JSON.stringify(data);
+        localStorage.setItem(key, serializedData);
+      } catch (e) {
+        console.error('Erreur lors de l’enregistrement dans localStorage', e);
+      }
     }
   }
 
-  // Récupérer des données depuis localStorage
   getData(key: string): any {
-    try {
-      const serializedData = localStorage.getItem(key);
-      if (serializedData === null) {
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        const serializedData = localStorage.getItem(key);
+        if (serializedData === null) {
+          return undefined;
+        }
+        return JSON.parse(serializedData);
+      } catch (e) {
+        console.error(
+          'Erreur lors de la récupération des données de localStorage',
+          e
+        );
         return undefined;
       }
-      return JSON.parse(serializedData);
-    } catch (e) {
-      console.error('Erreur lors de la récupération des données de localStorage', e);
-      return undefined;
     }
+    return undefined;
   }
 }

@@ -31,13 +31,12 @@
             <span class="material-icons mr-2">hourglass_bottom</span>
             <p class="font-semibold">{{ item.title }}</p>
           </div>
-          <p class="pl-8">{{item.description}}</p>
+          <p class="pl-8">{{ item.description }}</p>
           <!-- Icône de suppression -->
           <span
             class="material-icons cursor-pointer text-#c9c8c8af-200 absolute top-0 right-0 mt-2 mr-2"
-            (click)="deleteTask(i)"
-            >clear</span
-          >
+            (click)="deleteTask(i, 'todo')">clear</span
+>
         </div>
       </div>
     </div>
@@ -56,7 +55,8 @@
             <span class="material-icons mr-2 spin">hourglass_top</span>
             {{ item.title }}
           </p>
-          <p class="pl-8">{{item.description}}</p>
+          <p class="pl-8">{{ item.description }}</p>
+          
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
               {{ item.title }}
             </p>
           </div>
-          <p class="pl-8">{{item.description}}</p>
+          <p class="pl-8">{{ item.description }}</p>
         </div>
       </div>
     </div>
