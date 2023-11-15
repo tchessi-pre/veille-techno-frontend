@@ -10,6 +10,10 @@ import {
 } from '@angular/cdk/drag-drop';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
 
+interface Task {
+  title: string;
+  description: string;
+}
 @Component({
   selector: 'app-task-list',
   standalone: true,
@@ -34,21 +38,50 @@ export class TaskListComponent {
   }
 
   onTaskAdded(event: { title: string; description: string }) {
-    // Ajoutez ici votre logique pour gérer l'ajout de la nouvelle tâche
-    // Par exemple, ajouter la tâche à la liste 'todo'
-    this.todo.push(event.title);
-    this.todo.push(event.description);
+    const newTask = {
+      title: event.title,
+      description: event.description,
+    };
+
+    this.todo.push(newTask);
   }
-  
+
   deleteTask(index: number) {
     this.todo.splice(index, 1);
   }
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-  inProgress: string[] = [];
+  todo: Task[] = [
+    {
+      title: 'Get to work',
+      description: 'Commencer le développement du nouveau projet.',
+    },
+    {
+      title: 'Pick up groceries',
+      description: 'Acheter des légumes et des fruits pour la semaine.',
+    },
+    { title: 'Planifier la réunion hebdomadaire', description: 'Organiser l\'ordre du jour' },
+  ];
 
-  drop(event: CdkDragDrop<string[]>) {
+  inProgress: Task[] = [
+    {
+      title: 'Rédiger le rapport de projet',
+      description: 'Finaliser le premier brouillon du rapport.',
+    },
+    { title: 'Développer la fonctionnalité X', description: 'Travailler sur l\'implémentation' },
+  ];
+
+  done: Task[] = [
+    {
+      title: 'Répondre aux e-mails',
+      description: 'Répondre à tous les e-mails en attente.',
+    },
+    {
+      title: 'Réunion avec le client',
+      description: 'Discuter des exigences du projet avec le client.',
+    },
+  ];
+
+  drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

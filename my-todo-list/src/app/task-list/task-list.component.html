@@ -29,9 +29,9 @@
           <!-- Contenu de la tâche -->
           <div class="flex flex-row">
             <span class="material-icons mr-2">hourglass_bottom</span>
-            <p class="font-semibold">{{ item }}</p>
+            <p class="font-semibold">{{ item.title }}</p>
           </div>
-          <p class="pl-8">description</p>
+          <p class="pl-8">{{item.description}}</p>
           <!-- Icône de suppression -->
           <span
             class="material-icons cursor-pointer text-#c9c8c8af-200 absolute top-0 right-0 mt-2 mr-2"
@@ -54,9 +54,9 @@
         <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
           <p class="font-semibold flex flex-row items-center">
             <span class="material-icons mr-2 spin">hourglass_top</span>
-            {{ item }}
+            {{ item.title }}
           </p>
-          <p class="pl-8">description</p>
+          <p class="pl-8">{{item.description}}</p>
         </div>
       </div>
     </div>
@@ -74,10 +74,10 @@
           <div class="font-semibold flex flex-row">
             <span class="material-icons mr-2 text-green-500">check_circle</span>
             <p class="font-semibold flex flex-row items-center line-through">
-              {{ item }}
+              {{ item.title }}
             </p>
           </div>
-          <p class="pl-8">description</p>
+          <p class="pl-8">{{item.description}}</p>
         </div>
       </div>
     </div>
