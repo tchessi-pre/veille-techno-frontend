@@ -9,6 +9,7 @@ import {
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
 import { DataService } from '../data.service';
 import { TaskFilterComponent } from '../task-filter/task-filter.component';
+import { KanbanHearderComponent } from "../kanban-hearder/kanban-hearder.component";
 
 interface Task {
   title: string;
@@ -17,16 +18,17 @@ interface Task {
 }
 
 @Component({
-  selector: 'app-task-list',
-  standalone: true,
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css'],
-  imports: [
-    CommonModule,
-    AddTaskModalComponent,
-    DragDropModule,
-    TaskFilterComponent,
-  ],
+    selector: 'app-task-list',
+    standalone: true,
+    templateUrl: './task-list.component.html',
+    styleUrls: ['./task-list.component.css'],
+    imports: [
+        CommonModule,
+        AddTaskModalComponent,
+        DragDropModule,
+        TaskFilterComponent,
+        KanbanHearderComponent
+    ]
 })
 export class TaskListComponent implements OnInit {
   currentFilter: string | undefined;

@@ -1,15 +1,14 @@
-<div class="flex items-center flex-row justify-around mt-4 mb-4">
-<button
-  class="btn btn-primary"
-  (click)="openModal()"
->
-  Ajouter une Tâche
-</button>
-<app-task-filter (filterChanged)="setFilter($event)"></app-task-filter>
+<div class="container mx-auto flex items-center flex-row justify-around mt-4 mb-4">
+  <button class="btn btn-primary" (click)="openModal()">
+    Ajouter une Tâche
+  </button>
+  <app-kanban-hearder></app-kanban-hearder>
+  <app-task-filter (filterChanged)="setFilter($event)"></app-task-filter>
 </div>
 
 <div class="flex justify-center mt-4">
   <div cdkDropListGroup>
+    <!--Modal-->
     <app-add-task-modal
       [showModal]="showAddTaskModal"
       (taskAdded)="onTaskAdded($event)"
@@ -18,7 +17,7 @@
 
     <!-- Colonne À faire -->
     <div class="example-container">
-      <h2>À faire ({{filteredTodo.length}})</h2>
+      <h2>À faire ({{ filteredTodo.length }})</h2>
       <div
         cdkDropList
         [cdkDropListData]="todo"
@@ -66,14 +65,16 @@
           *ngFor="let item of filteredInProgress; let i = index"
           cdkDrag
         >
+        <div class="flex flex-row">
+          <span class="material-icons mr-2 spin">hourglass_top</span>
           <p class="font-semibold flex flex-row items-center">
-            <span class="material-icons mr-2 spin">hourglass_top</span>
             {{ item.title }}
             <span
               [ngClass]="getPriorityClass(item.priority)"
               class="ml-2 badge-circle"
             ></span>
           </p>
+          </div>
           <p class="pl-8">{{ item.description }}</p>
         </div>
       </div>
