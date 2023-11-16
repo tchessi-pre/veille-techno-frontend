@@ -4,6 +4,9 @@
 >
   Ajouter une Tâche
 </button>
+
+<app-task-filter (filterChanged)="setFilter($event)"></app-task-filter>
+
 <div class="flex justify-center mt-4">
   <div cdkDropListGroup>
     <app-add-task-modal
@@ -23,7 +26,7 @@
       >
         <div
           class="example-box relative"
-          *ngFor="let item of todo; let i = index"
+          *ngFor="let item of filteredTodo; let i = index"
           cdkDrag
         >
           <!-- Contenu de la tâche -->
@@ -57,7 +60,11 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
+        <div
+          class="example-box relative"
+          *ngFor="let item of filteredInProgress; let i = index"
+          cdkDrag
+        >
           <p class="font-semibold flex flex-row items-center">
             <span class="material-icons mr-2 spin">hourglass_top</span>
             {{ item.title }}
@@ -82,7 +89,7 @@
       >
         <div
           class="example-box relative"
-          *ngFor="let item of done; let i = index"
+          *ngFor="let item of filteredDone; let i = index"
           cdkDrag
         >
           <div class="font-semibold flex flex-row justify-between">

@@ -8,6 +8,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
 import { DataService } from '../data.service';
+import { TaskFilterComponent } from '../task-filter/task-filter.component';
 
 interface Task {
   title: string;
@@ -20,25 +21,50 @@ interface Task {
   standalone: true,
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
-  imports: [CommonModule, AddTaskModalComponent, DragDropModule],
+  imports: [
+    CommonModule,
+    AddTaskModalComponent,
+    DragDropModule,
+    TaskFilterComponent,
+  ],
 })
 export class TaskListComponent implements OnInit {
-  clearDoneTasks() {
-    this.done = [];
-    this.saveTasks();
-  }
+  currentFilter: string | undefined;
+  filteredTasks: Task[] = [];
   showAddTaskModal = false;
   todo: Task[] = [];
   inProgress: Task[] = [];
   done: Task[] = [];
+
+  filteredTodo: Task[] = [];
+  filteredInProgress: Task[] = [];
+  filteredDone: Task[] = [];
+
   constructor(private dataService: DataService) {}
+
+  clearDoneTasks() {
+    this.done = [];
+    this.saveTasks();
+  }
 
   ngOnInit() {
     this.loadTasks();
+    this.updateFilteredTasks();
   }
 
   openModal() {
     this.showAddTaskModal = true;
+  }
+
+  setFilter(filter: string) {
+    this.currentFilter = filter;
+    this.updateFilteredTasks();
+  }
+
+  updateFilteredTasks() {
+    this.filteredTodo = this.filterTasks(this.todo);
+    this.filteredInProgress = this.filterTasks(this.inProgress);
+    this.filteredDone = this.filterTasks(this.done);
   }
 
   onTaskAdded(event: {
@@ -106,6 +132,14 @@ export class TaskListComponent implements OnInit {
         return 'bg-priority-haute';
       default:
         return '';
+    }
+  }
+
+  private filterTasks(taskList: Task[]): Task[] {
+    if (!this.currentFilter || this.currentFilter === 'all') {
+      return taskList;
+    } else {
+      return taskList.filter((task) => task.priority === this.currentFilter);
     }
   }
 }
