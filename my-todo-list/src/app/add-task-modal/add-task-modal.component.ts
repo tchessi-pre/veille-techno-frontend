@@ -13,10 +13,13 @@ export class AddTaskModalComponent {
   taskTitle: string = '';
   taskDescription: string = '';
   showAddTaskModal = false;
-  @Input() showModal: boolean = false; // Garder cette propriété
+  taskPriority: 'basse' | 'moyenne' | 'haute' = 'basse';
+
+  @Input() showModal: boolean = false;
   @Output() taskAdded = new EventEmitter<{
     title: string;
     description: string;
+    priority: 'basse' | 'moyenne' | 'haute';
   }>();
 
   openModal() {
@@ -28,6 +31,7 @@ export class AddTaskModalComponent {
       this.taskAdded.emit({
         title: this.taskTitle,
         description: this.taskDescription,
+        priority: this.taskPriority,
       });
       this.closeModal();
     }
@@ -35,5 +39,8 @@ export class AddTaskModalComponent {
 
   closeModal(): void {
     this.showModal = false;
+    // Réinitialiser les champs du formulaire ici, si nécessaire
+    this.taskTitle = '';
+    this.taskDescription = '';
   }
 }

@@ -30,6 +30,12 @@
           <div class="flex flex-row">
             <span class="material-icons mr-2">hourglass_bottom</span>
             <p class="font-semibold">{{ item.title }}</p>
+            <span
+              [ngClass]="getPriorityClass(item.priority)"
+              class="ml-2 badge"
+            >
+              {{ item.priority }}
+            </span>
           </div>
           <p class="pl-8">{{ item.description }}</p>
           <!-- Icône de suppression -->
@@ -85,7 +91,7 @@
           <span
             class="material-icons cursor-pointer text-#c9c8c8af-200 absolute top-0 right-0 mt-2 mr-2"
             (click)="deleteTask(i, 'done')"
-            >delete</span
+            >remove</span
           >
         </div>
       </div>

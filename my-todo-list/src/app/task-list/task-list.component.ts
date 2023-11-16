@@ -12,6 +12,7 @@ import { DataService } from '../data.service';
 interface Task {
   title: string;
   description: string;
+  priority: 'basse' | 'moyenne' | 'haute';
 }
 
 @Component({
@@ -40,10 +41,15 @@ export class TaskListComponent implements OnInit {
     this.showAddTaskModal = true;
   }
 
-  onTaskAdded(event: { title: string; description: string }) {
+  onTaskAdded(event: {
+    title: string;
+    description: string;
+    priority: 'basse' | 'moyenne' | 'haute';
+  }) {
     const newTask = {
       title: event.title,
       description: event.description,
+      priority: event.priority,
     };
     this.todo.push(newTask);
     this.saveTasks();
@@ -81,10 +87,25 @@ export class TaskListComponent implements OnInit {
     this.dataService.saveData('tasks', tasksData);
   }
 
-  private loadTasks() {
-    const tasksData = JSON.parse(localStorage.getItem('tasks') || '{}');
-    this.todo = tasksData.todo || [];
-    this.inProgress = tasksData.inProgress || [];
-    this.done = tasksData.done || [];
+  loadTasks() {
+    const tasksData = this.dataService.getData('tasks');
+    if (tasksData) {
+      this.todo = tasksData.todo || [];
+      this.inProgress = tasksData.inProgress || [];
+      this.done = tasksData.done || [];
+    }
+  }
+
+  getPriorityClass(priority: 'basse' | 'moyenne' | 'haute'): string {
+    switch (priority) {
+      case 'basse':
+        return 'text-green-500'; // Classe pour priorité basse
+      case 'moyenne':
+        return 'text-yellow-500'; // Classe pour priorité moyenne
+      case 'haute':
+        return 'text-red-500'; // Classe pour priorité haute
+      default:
+        return '';
+    }
   }
 }
