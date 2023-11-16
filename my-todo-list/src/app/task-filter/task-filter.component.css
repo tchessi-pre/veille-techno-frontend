@@ -1,0 +1,14 @@
+.filter-options button {
+  background-color: #344635; 
+  color: white;
+  padding: 10px 20px; 
+  margin: 5px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.filter-options button:hover {
+  background-color: #45a049; 
+}
