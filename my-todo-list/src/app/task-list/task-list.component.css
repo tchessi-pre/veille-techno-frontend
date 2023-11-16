@@ -64,3 +64,22 @@
   font-size: 0.75rem;
   font-weight: bold;
 }
+
+.badge-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.bg-priority-basse {
+  background-color: green;
+}
+
+.bg-priority-moyenne {
+  background-color: yellow;
+}
+
+.bg-priority-haute {
+  background-color: red;
+}

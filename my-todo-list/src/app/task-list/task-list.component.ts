@@ -99,11 +99,11 @@ export class TaskListComponent implements OnInit {
   getPriorityClass(priority: 'basse' | 'moyenne' | 'haute'): string {
     switch (priority) {
       case 'basse':
-        return 'text-green-500'; // Classe pour priorité basse
+        return 'bg-priority-basse';
       case 'moyenne':
-        return 'text-yellow-500'; // Classe pour priorité moyenne
+        return 'bg-priority-moyenne';
       case 'haute':
-        return 'text-red-500'; // Classe pour priorité haute
+        return 'bg-priority-haute';
       default:
         return '';
     }

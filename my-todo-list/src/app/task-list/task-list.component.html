@@ -29,13 +29,13 @@
           <!-- Contenu de la tâche -->
           <div class="flex flex-row">
             <span class="material-icons mr-2">hourglass_bottom</span>
-            <p class="font-semibold">{{ item.title }}</p>
-            <span
-              [ngClass]="getPriorityClass(item.priority)"
-              class="ml-2 badge"
-            >
-              {{ item.priority }}
-            </span>
+            <p class="font-semibold">
+              {{ item.title }}
+              <span
+                [ngClass]="getPriorityClass(item.priority)"
+                class="ml-2 badge-circle"
+              ></span>
+            </p>
           </div>
           <p class="pl-8">{{ item.description }}</p>
           <!-- Icône de suppression -->
@@ -61,6 +61,10 @@
           <p class="font-semibold flex flex-row items-center">
             <span class="material-icons mr-2 spin">hourglass_top</span>
             {{ item.title }}
+            <span
+              [ngClass]="getPriorityClass(item.priority)"
+              class="ml-2 badge-circle"
+            ></span>
           </p>
           <p class="pl-8">{{ item.description }}</p>
         </div>
@@ -85,6 +89,10 @@
             <span class="material-icons mr-2 text-green-500">check_circle</span>
             <p class="font-semibold flex flex-row items-center line-through">
               {{ item.title }}
+              <span
+                [ngClass]="getPriorityClass(item.priority)"
+                class="ml-2 badge-circle"
+              ></span>
             </p>
           </div>
           <p class="pl-8">{{ item.description }}</p>
