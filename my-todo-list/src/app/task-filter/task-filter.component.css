@@ -12,3 +12,8 @@
 .filter-options button:hover {
   background-color: #45a049; 
 }
+
+.filter-options button:focus {
+  background-color: #5faa62; 
+}
+
