@@ -1,5 +1,5 @@
 {
-  "name": "my-todo-list",
+  "name": "kanban-board-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
