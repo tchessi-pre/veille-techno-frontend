@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 export class AddTaskModalComponent {
   taskTitle: string = '';
   taskDescription: string = '';
-  showAddTaskModal = false;
   taskPriority: 'basse' | 'moyenne' | 'haute' = 'basse';
 
   @Input() showModal: boolean = false;
@@ -23,8 +22,9 @@ export class AddTaskModalComponent {
   }>();
 
   openModal() {
-    this.showAddTaskModal = true;
+    this.showModal = true;
   }
+
   submitTask(): void {
     if (this.taskTitle.trim() || this.taskDescription.trim()) {
       // Envoyer les données de la tâche au composant parent

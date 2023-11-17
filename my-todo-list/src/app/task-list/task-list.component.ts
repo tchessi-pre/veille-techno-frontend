@@ -41,6 +41,7 @@ export class TaskListComponent implements OnInit {
   filteredTodo: Task[] = [];
   filteredInProgress: Task[] = [];
   filteredDone: Task[] = [];
+showModal: any;
 
   constructor(private dataService: DataService) {}
 
