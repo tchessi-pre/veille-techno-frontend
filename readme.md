@@ -18,9 +18,9 @@ Une application Kanban Board simple réalisée avec Angular 17 pour vous aider �
 Pour installer l'application localement, suivez ces étapes :
 
 1. Clonez le dépôt GitHub sur votre machine locale :
+
 ```
 git clone https://github.com/tchessi-pre/veille-techno-frontend.git
-
 ```
 
 1. Accédez au répertoire de l'application :
@@ -34,9 +34,9 @@ npm install
 
 
 4. Démarrez l'application en mode développement :
+
 ```
 ng serve ou ng serve -o
-
 ```
 L'application sera accessible à l'adresse `http://localhost:4200/` dans votre navigateur.
 
@@ -57,9 +57,6 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à l'améli
 4. Pushez votre branche (`git push origin feature/ma-fonctionnalite`)
 5. Ouvrez une demande de tirage (Pull Request) sur GitHub
 ```
-## Licence
-
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ## Contact
 
