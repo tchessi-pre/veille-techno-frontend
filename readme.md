@@ -12,6 +12,7 @@ Une application Kanban Board simple réalisée avec Angular 17 pour vous aider �
 - Organisez vos tâches en colonnes "À faire", "En cours" et "Terminé".
 - Déplacez les tâches d'une colonne à une autre en utilisant le glisser-déposer.
 - Visualisez vos tâches avec un design propre et intuitif.
+- **Filtrez par priorité :** Classez vos tâches par priorité pour vous concentrer sur celles qui sont les plus importantes.
 ```
 ## Installation
 
@@ -51,7 +52,7 @@ L'application sera accessible à l'adresse `http://localhost:4200/` dans votre n
 
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à l'amélioration de cette application, veuillez suivre ces étapes :
 ```
-1. ForkEz le dépôt (`https://github.com/votre-utilisateur/kanban-board-app/fork`)
+1. Forkez le dépôt (`https://github.com/votre-utilisateur/kanban-board-app/fork`)
 2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalite`)
 3. Commitez vos modifications (`git commit -am 'Ajout de ma fonctionnalité'`)
 4. Pushez votre branche (`git push origin feature/ma-fonctionnalite`)
