@@ -12,7 +12,7 @@ Une application Kanban Board simple réalisée avec Angular 17 pour vous aider �
 - Organisez vos tâches en colonnes "À faire", "En cours" et "Terminé".
 - Déplacez les tâches d'une colonne à une autre en utilisant le glisser-déposer.
 - Visualisez vos tâches avec un design propre et intuitif.
-- **Filtrez par priorité :** Classez vos tâches par priorité pour vous concentrer sur celles qui sont les plus importantes.
+- Filtrez par priorité : Classez vos tâches par priorité pour vous concentrer sur celles qui sont les plus importantes.
 ```
 ## Installation
 
